@@ -1,0 +1,108 @@
+<div class="container">
+    <h2>Add Laptop</h2>
+    <form [formGroup]="laptopForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+            <div *ngIf="formSubmitted && laptopForm.get('name')?.invalid" class="text-danger">
+                <div *ngIf="laptopForm.get('name')?.errors?.['required']">Name is required.</div>
+                <div *ngIf="laptopForm.get('name')?.errors?.['minlength']">Minimum length must be 3 characters.</div>
+                <div *ngIf="laptopForm.get('name')?.errors?.['maxlength']">Maximum length must be 20 characters.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" class="form-control" id="price" formControlName="price">
+            <div *ngIf="formSubmitted && laptopForm.get('price')?.invalid" class="text-danger">
+                <div *ngIf="laptopForm.get('price')?.errors?.['required']">Price is required.</div>
+                <div *ngIf="laptopForm.get('price')?.errors?.['min']">Minimum value must be 0.</div>
+                <div *ngIf="laptopForm.get('price')?.errors?.['max']">Maximum value must be 9999.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="brand">Brand:</label>
+            <input type="text" class="form-control" id="brand" formControlName="brand">
+            <div *ngIf="formSubmitted && laptopForm.get('brand')?.invalid" class="text-danger">
+                <div *ngIf="laptopForm.get('brand')?.errors?.['required']">Brand is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="storage">Storage:</label>
+            <input type="text" class="form-control" id="storage" formControlName="storage">
+            <div *ngIf="formSubmitted && laptopForm.get('storage')?.invalid" class="text-danger">
+                <div *ngIf="laptopForm.get('storage')?.errors?.['required']">Storage is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="ram">RAM:</label>
+            <input type="text" class="form-control" id="ram" formControlName="ram">
+            <div *ngIf="formSubmitted && laptopForm.get('ram')?.invalid" class="text-danger">
+                <div *ngIf="laptopForm.get('ram')?.errors?.['required']">RAM is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="processor">Processor:</label>
+            <input type="text" class="form-control" id="processor" formControlName="processor">
+            <div *ngIf="formSubmitted && laptopForm.get('processor')?.invalid" class="text-danger">
+                <div *ngIf="laptopForm.get('processor')?.errors?.['required']">Processor is required.</div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!laptopForm.valid">Add Laptop</button>
+    </form>
+
+
+    <h2>Laptop List</h2>
+    <form [formGroup]="searchForm">
+        <div class="form-group">
+            <label for="searchName">Search by Name:</label>
+            <input type="text" class="form-control" id="searchName" formControlName="searchName" (keyup)="onSearch()">
+        </div>
+        <div class="form-group">
+            <label for="searchPrice">Search by Price:</label>
+            <input type="number" class="form-control" id="searchPrice" formControlName="searchPrice"
+                (keyup)="searchLaptopsByPrice()">
+        </div>
+
+        <div class="form-group">
+            <label for="searchBrand">Search by Brand:</label>
+            <input type="text" class="form-control" id="searchBrand" formControlName="searchBrand"
+                (keyup)="searchLaptopsByBrand()">
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Brand</th>
+                <th>Storage</th>
+                <th>RAM</th>
+                <th>Processor</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let laptop of filteredLaptops">
+                <td>{{ laptop.id }}</td>
+                <td>{{ laptop.name }}</td>
+                <td>{{ laptop.price }}</td>
+                <td>{{ laptop.brand }}</td>
+                <td>{{ laptop.storage }}</td>
+                <td>{{ laptop.ram }}</td>
+                <td>{{ laptop.processor }}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" (click)="editLaptop(laptop.id)">Edit</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteLaptop(laptop.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
