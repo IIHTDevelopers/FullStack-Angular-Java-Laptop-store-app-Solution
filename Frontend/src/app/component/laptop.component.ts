@@ -6,7 +6,7 @@ import { Laptop } from '../model/laptop.model';
 @Component({
     selector: 'app-laptop',
     templateUrl: './laptop.component.html',
-    styleUrls: ['./laptop.component.css'],
+    styleUrls: [],
 })
 export class LaptopComponent implements OnInit {
     laptops: Laptop[] = [];
