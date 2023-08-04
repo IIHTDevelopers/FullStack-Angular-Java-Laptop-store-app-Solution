@@ -66,13 +66,13 @@
         <div class="form-group">
             <label for="searchPrice">Search by Price:</label>
             <input type="number" class="form-control" id="searchPrice" formControlName="searchPrice"
-                (keyup)="searchLaptopsByPrice()">
+                (keyup)="onSearch()">
         </div>
 
         <div class="form-group">
             <label for="searchBrand">Search by Brand:</label>
             <input type="text" class="form-control" id="searchBrand" formControlName="searchBrand"
-                (keyup)="searchLaptopsByBrand()">
+                (keyup)="onSearch()">
         </div>
     </form>
 
