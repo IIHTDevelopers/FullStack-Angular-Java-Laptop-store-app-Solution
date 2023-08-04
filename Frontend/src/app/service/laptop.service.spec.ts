@@ -136,26 +136,6 @@ describe('LaptopService', () => {
             req.flush(null, { status: 204, statusText: 'No Content' });
         });
 
-        it('should update a laptop via the API', () => {
-            const updatedLaptop: Laptop = {
-                id: 1,
-                name: 'Updated Laptop',
-                price: 1800,
-                brand: 'Brand Y',
-                storage: '512GB',
-                ram: '16GB',
-                processor: 'i7',
-            };
-
-            service.updateLaptop(updatedLaptop.id, updatedLaptop).subscribe((result: any) => {
-                expect(result).toEqual(updatedLaptop);
-            });
-
-            const req = httpTestingController.expectOne(`http://localhost:8081/laptopstore/laptops/${updatedLaptop.id}`);
-            expect(req.request.method).toEqual('PUT');
-            req.flush(updatedLaptop);
-        });
-
         it('should handle errors during laptop update', () => {
             const updatedLaptop: Laptop = {
                 id: 1,
@@ -177,18 +157,6 @@ describe('LaptopService', () => {
             const req = httpTestingController.expectOne(`http://localhost:8081/laptopstore/laptops/${updatedLaptop.id}`);
             expect(req.request.method).toEqual('PUT');
             req.flush('Laptop not found', { status: 404, statusText: 'Not Found' });
-        });
-
-        it('should delete a laptop via the API', () => {
-            const laptopId = 1;
-
-            service.deleteLaptop(laptopId).subscribe((result: any) => {
-                expect(result).toBeUndefined(); // Expect no data returned for successful deletion
-            });
-
-            const req = httpTestingController.expectOne(`http://localhost:8081/laptopstore/laptops/${laptopId}`);
-            expect(req.request.method).toEqual('DELETE');
-            req.flush(null, { status: 204, statusText: 'No Content' });
         });
 
         it('should handle errors during laptop deletion', () => {
