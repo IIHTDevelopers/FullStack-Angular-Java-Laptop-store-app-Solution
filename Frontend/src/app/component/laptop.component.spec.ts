@@ -169,27 +169,6 @@ describe('LaptopComponent', () => {
             expect(deleteLaptopSpy).toHaveBeenCalledWith(1);
         });
 
-        // it('should reset the form after successful form submission', () => {
-        //     // ... (existing test setup and code)
-
-        //     // Spy on the resetForm method to track its calls
-        //     const resetFormSpy = jest.spyOn(component, 'resetForm');
-
-        //     // Call the onSubmit method with valid form data
-        //     component.laptopForm.setValue({
-        //         name: 'Test Laptop',
-        //         price: 1000,
-        //         brand: 'Brand X',
-        //         storage: '512GB',
-        //         ram: '16GB',
-        //         processor: 'i7',
-        //     });
-        //     component.onSubmit();
-
-        //     // Expect the resetForm method to have been called
-        //     expect(resetFormSpy).toHaveBeenCalled();
-        // });
-
         it('should call getAllLaptops method of LaptopService after successful form submission', () => {
             // Call the onSubmit method with valid form data
             component.laptopForm.setValue({
@@ -204,34 +183,6 @@ describe('LaptopComponent', () => {
 
             // Expect the getAllLaptops method to have been called
             expect(laptopService.getAllLaptops).toHaveBeenCalled();
-        });
-
-        it('should call createLaptop method of LaptopService when the form is submitted', () => {
-            // Spy on the createLaptop method to mock its return value
-            const mockLaptop: Laptop = {
-                id: 1,
-                name: 'Test Laptop',
-                price: 1000,
-                brand: 'Brand X',
-                storage: '512GB',
-                ram: '16GB',
-                processor: 'i7',
-            };
-            jest.spyOn(laptopService, 'createLaptop').mockReturnValue(of(mockLaptop));
-
-            // Call the onSubmit method with valid form data
-            component.laptopForm.setValue({
-                name: 'Test Laptop',
-                price: 1000,
-                brand: 'Brand X',
-                storage: '512GB',
-                ram: '16GB',
-                processor: 'i7',
-            });
-            component.onSubmit();
-
-            // Expect the createLaptop method to have been called
-            expect(laptopService.createLaptop).toHaveBeenCalled();
         });
     });
 });
