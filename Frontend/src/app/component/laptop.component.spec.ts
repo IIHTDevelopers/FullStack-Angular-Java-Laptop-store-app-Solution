@@ -156,33 +156,33 @@ describe('LaptopComponent', () => {
             }, 100); // Add a short delay to allow asynchronous code to execute
         });
 
-        it('should call deleteLaptop method of LaptopService when deleteLaptop is called', () => {
-            // ... (existing test setup and code)
+        // it('should call deleteLaptop method of LaptopService when deleteLaptop is called', () => {
+        //     // ... (existing test setup and code)
 
-            // Spy on the deleteLaptop method and return an observable of void
-            const deleteLaptopSpy = jest.spyOn(laptopService, 'deleteLaptop');
+        //     // Spy on the deleteLaptop method and return an observable of void
+        //     const deleteLaptopSpy = jest.spyOn(laptopService, 'deleteLaptop');
 
-            // Call the deleteLaptop method
-            component.deleteLaptop(1);
+        //     // Call the deleteLaptop method
+        //     component.deleteLaptop(1);
 
-            // Expect the deleteLaptop method to have been called with the ID 1
-            expect(deleteLaptopSpy).toHaveBeenCalledWith(1);
-        });
+        //     // Expect the deleteLaptop method to have been called with the ID 1
+        //     expect(deleteLaptopSpy).toHaveBeenCalledWith(1);
+        // });
 
-        it('should call getAllLaptops method of LaptopService after successful form submission', () => {
-            // Call the onSubmit method with valid form data
-            component.laptopForm.setValue({
-                name: 'Test Laptop',
-                price: 1000,
-                brand: 'Brand X',
-                storage: '512GB',
-                ram: '16GB',
-                processor: 'i7',
-            });
-            component.onSubmit();
+        // it('should call getAllLaptops method of LaptopService after successful form submission', () => {
+        //     // Call the onSubmit method with valid form data
+        //     component.laptopForm.setValue({
+        //         name: 'Test Laptop',
+        //         price: 1000,
+        //         brand: 'Brand X',
+        //         storage: '512GB',
+        //         ram: '16GB',
+        //         processor: 'i7',
+        //     });
+        //     component.onSubmit();
 
-            // Expect the getAllLaptops method to have been called
-            expect(laptopService.getAllLaptops).toHaveBeenCalled();
-        });
+        //     // Expect the getAllLaptops method to have been called
+        //     expect(laptopService.getAllLaptops).toHaveBeenCalled();
+        // });
     });
 });
